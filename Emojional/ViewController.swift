@@ -8,6 +8,8 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    let emojis = ["🥲": "single tear", "😖": "embarrassed", "😴": "sleepy", "🥰": "love"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,9 +19,13 @@ class ViewController: UIViewController {
     @IBAction func showMessage(sender: UIButton) {
         //print out a message!
         
-        let alertController = UIAlertController(title: "Emoji", message: "You got this!", preferredStyle: UIAlertController.Style.alert)
+        let selectedEmotion = sender.titleLabel?.text
         
-        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        let alertController = UIAlertController(title: "Emoji", message: emojis[selectedEmotion!]!, preferredStyle: UIAlertController.Style.alert)
+        
+        alertController.addAction(UIAlertAction(title: "Thank you!", style: UIAlertAction.Style.default, handler: nil))
+        
+        alertController.addAction(UIAlertAction(title: "Unhelpful..", style: UIAlertAction.Style.default, handler: nil))
         
         present(alertController, animated: true, completion: nil)
     }
